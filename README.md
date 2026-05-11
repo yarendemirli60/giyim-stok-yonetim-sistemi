@@ -1,0 +1,1 @@
+# giyim-stok-yonetim-sistemi
