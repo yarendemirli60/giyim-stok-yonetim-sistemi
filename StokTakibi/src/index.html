@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ModaStock | Ürün Stok Takibi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <aside class="sidebar">
+      <div class="logo">
+        <h2>ModaStock</h2>
+        <p>Ürün & Stok Yönetimi</p>
+      </div>
+
+      <nav>
+        <a class="active">Dashboard</a>
+        <a>Ürünler</a>
+        <a>Kategoriler</a>
+        <a>Stok Raporu</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1>Giyim Mağazası Stok Paneli</h1>
+          <p>Ürünleri ekle, güncelle, sil ve stok durumunu takip et.</p>
+        </div>
+
+        <button id="openFormBtn" class="primary-btn">+ Yeni Ürün</button>
+      </header>
+
+      <section class="stats">
+        <div class="stat-card">
+          <span>Toplam Ürün</span>
+          <h3 id="totalProducts">0</h3>
+        </div>
+
+        <div class="stat-card warning">
+          <span>Kritik Stok</span>
+          <h3 id="lowStockProducts">0</h3>
+        </div>
+
+        <div class="stat-card danger">
+          <span>Stokta Yok</span>
+          <h3 id="outOfStockProducts">0</h3>
+        </div>
+
+        <div class="stat-card success">
+          <span>Toplam Stok Değeri</span>
+          <h3 id="totalStockValue">₺0</h3>
+        </div>
+      </section>
+
+      <section class="filters">
+        <input type="text" id="searchInput" placeholder="Ürün adı, renk veya beden ara..." />
+
+        <select id="categoryFilter">
+          <option value="all">Tüm Kategoriler</option>
+          <option value="Üst Giyim">Üst Giyim</option>
+          <option value="Alt Giyim">Alt Giyim</option>
+          <option value="Dış Giyim">Dış Giyim</option>
+          <option value="Aksesuar">Aksesuar</option>
+          <option value="Ayakkabı">Ayakkabı</option>
+        </select>
+
+        <select id="stockFilter">
+          <option value="all">Tüm Stok Durumları</option>
+          <option value="normal">Stokta Var</option>
+          <option value="low">Kritik Stok</option>
+          <option value="out">Stokta Yok</option>
+        </select>
+      </section>
+
+      <section class="table-card">
+        <div class="table-header">
+          <h2>Ürün Listesi</h2>
+          <p>CRUD işlemleri bu alandan yapılır.</p>
+        </div>
+
+        <div id="productList" class="product-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="formModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="formTitle">Yeni Ürün Ekle</h2>
+        <button id="closeFormBtn" class="close-btn">×</button>
+      </div>
+
+      <form id="productForm">
+        <div class="form-grid">
+          <div>
+            <label>Ürün Adı</label>
+            <input type="text" id="productName" required />
+          </div>
+
+          <div>
+            <label>Kategori</label>
+            <select id="productCategory" required>
+              <option value="">Seçiniz</option>
+              <option value="Üst Giyim">Üst Giyim</option>
+              <option value="Alt Giyim">Alt Giyim</option>
+              <option value="Dış Giyim">Dış Giyim</option>
+              <option value="Aksesuar">Aksesuar</option>
+              <option value="Ayakkabı">Ayakkabı</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Beden</label>
+            <input type="text" id="productSize" placeholder="S, M, L, 38..." required />
+          </div>
+
+          <div>
+            <label>Renk</label>
+            <input type="text" id="productColor" required />
+          </div>
+
+          <div>
+            <label>Stok Adedi</label>
+            <input type="number" id="productStock" min="0" required />
+          </div>
+
+          <div>
+            <label>Satış Fiyatı</label>
+            <input type="number" id="productPrice" min="0" required />
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" id="cancelEditBtn" class="secondary-btn">Vazgeç</button>
+          <button type="submit" class="primary-btn" id="submitBtn">Ürünü Kaydet</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

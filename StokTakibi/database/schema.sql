@@ -1,0 +1,18 @@
+CREATE DATABASE IF NOT EXISTS stok_takibi;
+
+USE stok_takibi;
+
+CREATE TABLE IF NOT EXISTS products (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  category VARCHAR(100) NOT NULL,
+  brand VARCHAR(100) NOT NULL,
+  size VARCHAR(30),
+  color VARCHAR(50),
+  season VARCHAR(50),
+  status VARCHAR(50),
+  price DECIMAL(10,2) NOT NULL,
+  stock INT NOT NULL,
+  minStock INT DEFAULT 5,
+  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
