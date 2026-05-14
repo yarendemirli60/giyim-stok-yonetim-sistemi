@@ -12,6 +12,27 @@ function getProducts(req, res) {
     res.status(200).json(products);
   });
 }
+function getProductById(req, res) {
+  const id = req.params.id;
+
+  productModel.getProductById(id, (err, product) => {
+    if (err) {
+      return res.status(500).json({
+        message: "Ürün alınamadı",
+        error: err.message,
+      });
+    }
+
+    if (!product) {
+      return res.status(404).json({
+        message: "Ürün bulunamadı",
+      });
+    }
+
+    res.status(200).json(product);
+  });
+}
+
 function createProduct(req, res) {
   const product = req.body;
 
@@ -69,6 +90,7 @@ function deleteProduct(req, res) {
 
 module.exports = {
   getProducts,
+  getProductById,
   createProduct,
   updateProduct,
   deleteProduct,
