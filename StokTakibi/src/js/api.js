@@ -1,4 +1,5 @@
 const API_URL = "http://localhost:3001/api/products";
+const AUTH_URL = "http://localhost:3001/api/auth";
 
 async function getProducts() {
   const response = await fetch(API_URL);
@@ -41,3 +42,16 @@ async function deleteProduct(id) {
 
   return response.json();
 }
+
+async function getUsers() {
+  const response = await fetch(`${AUTH_URL}/users`);
+  return response.json();
+}
+export {
+  getProducts,
+  getProductById,
+  createProduct,
+  updateProduct,
+  deleteProduct,
+  getUsers,
+};
